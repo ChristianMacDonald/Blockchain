@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>{{id}}'s Wallet</title>
+    </head>
+    <body>
+        <div>{{id}} has {{total}} coins.</div>
+        {% for transaction in transactions %}
+        {% if transaction['recipient'] == id %}
+        {% if transaction['sender'] == '0' %}
+        <div style="background-color: green;">Mined {{transaction['amount']}} coins.</div>
+        {% else %}
+        <div style="background-color: green;">Received {{transaction['amount']}} from {{transaction['sender']}}.</div>
+        {% endif %}
+        {% else %}
+        <div style="background-color: red;">Sent {{transaction['amount']}} to {{transaction['recipient']}}.</div>
+        {% endif %}
+        {% endfor %}
+    </body>
+</html>
